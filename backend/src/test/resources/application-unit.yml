@@ -6,6 +6,7 @@ spring:
       - org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration
       - org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration
       - org.springframework.boot.autoconfigure.data.redis.RedisRepositoriesAutoConfiguration
+      - org.springframework.boot.autoconfigure.session.SessionAutoConfiguration
 management:
   health:
     redis:

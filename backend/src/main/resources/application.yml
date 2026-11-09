@@ -20,6 +20,10 @@ spring:
       connect-timeout: 3s
   flyway:
     clean-disabled: true
+  session:
+    timeout: 30m
+    redis:
+      namespace: '${orderops.redis-key-prefix}session'
   jackson:
     time-zone: UTC
     serialization:
@@ -31,6 +35,11 @@ server:
   port: ${SERVER_PORT:8080}
   shutdown: graceful
   servlet:
+    session:
+      cookie:
+        http-only: true
+        secure: ${ORDEROPS_COOKIE_SECURE:false}
+        same-site: lax
     encoding:
       charset: UTF-8
       enabled: true
@@ -59,6 +68,8 @@ logging:
   level:
     root: ${LOG_LEVEL_ROOT:INFO}
     com.orderops: ${LOG_LEVEL_APP:INFO}
+    com.orderops.auth.AccountMapper: INFO
+    org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor: INFO
 
 mybatis:
   configuration:

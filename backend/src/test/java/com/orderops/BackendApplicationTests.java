@@ -10,12 +10,17 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
+import com.orderops.auth.AccountMapper;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @ActiveProfiles("unit")
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class BackendApplicationTests {
+
+    @MockitoBean
+    private AccountMapper accountMapper;
 
     @Autowired
     private TestRestTemplate restTemplate;
