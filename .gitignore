@@ -1,0 +1,59 @@
+# Repository scope: source, configuration, and dependency lockfiles.
+/*
+!/.gitignore
+!/.gitattributes
+!/.editorconfig
+!/.github/
+!/.run/
+!/backend/
+!/frontend/
+!/agent-service/
+!/deploy/
+!/scripts/
+!/tests/
+
+# Local documentation and plans.
+*.md
+*.mdx
+*.rst
+/docs/
+
+# IDE and build output
+.idea/
+*.iml
+*.iws
+*.ipr
+target/
+out/
+.local-cache/
+node_modules/
+dist/
+build/
+*.tsbuildinfo
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Local credentials and configuration
+.env
+.env.*
+!.env.example
+*.local.yml
+*.local.yaml
+*.local.properties
+
+# Runtime and browser session data
+logs/
+*.log
+playwright/.auth/
+playwright-report/
+test-results/
+.DS_Store
+Thumbs.db
+*.tmp
+*.bak
