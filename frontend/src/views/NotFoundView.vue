@@ -1,10 +1,4 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
 </script>
-
-<template>
-  <section class="panel" aria-labelledby="not-found-title">
-    <h1 id="not-found-title">页面不存在</h1>
-    <RouterLink to="/">返回商城</RouterLink>
-  </section>
-</template>
+<template><main class="message-page"><span class="brand-mark">O<span>.</span></span><p class="eyebrow">NOT FOUND / 404</p><h1>页面走丢了<span class="heading-dot">.</span></h1><p>没有找到你要访问的页面。</p><RouterLink class="primary-button inline-button" to="/">返回首页 <span>↗</span></RouterLink></main></template>
