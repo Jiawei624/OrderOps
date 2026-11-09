@@ -3,6 +3,23 @@ spring:
     name: orderops-backend
   profiles:
     default: local
+  datasource:
+    url: ${ORDEROPS_DB_URL}
+    username: ${ORDEROPS_DB_USER}
+    password: ${ORDEROPS_DB_PASSWORD}
+    hikari:
+      maximum-pool-size: ${ORDEROPS_DB_POOL_SIZE:10}
+      connection-timeout: 5000
+      validation-timeout: 3000
+  data:
+    redis:
+      host: ${ORDEROPS_REDIS_HOST}
+      port: ${ORDEROPS_REDIS_PORT:6379}
+      password: ${ORDEROPS_REDIS_PASSWORD}
+      timeout: 3s
+      connect-timeout: 3s
+  flyway:
+    clean-disabled: true
   jackson:
     time-zone: UTC
     serialization:
@@ -42,3 +59,11 @@ logging:
   level:
     root: ${LOG_LEVEL_ROOT:INFO}
     com.orderops: ${LOG_LEVEL_APP:INFO}
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+
+orderops:
+  database-name: ${ORDEROPS_DB_NAME:orderops_dev}
+  redis-key-prefix: ${ORDEROPS_REDIS_PREFIX:orderops:dev:}

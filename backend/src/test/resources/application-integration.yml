@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: ${ORDEROPS_TEST_DB_URL}
+    username: ${ORDEROPS_TEST_DB_USER}
+    password: ${ORDEROPS_TEST_DB_PASSWORD}
+  data:
+    redis:
+      host: ${ORDEROPS_TEST_REDIS_HOST}
+      port: ${ORDEROPS_TEST_REDIS_PORT:6379}
+      password: ${ORDEROPS_TEST_REDIS_PASSWORD}
+orderops:
+  database-name: orderops_test
+  redis-key-prefix: 'orderops:test:'

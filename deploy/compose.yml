@@ -1,0 +1,45 @@
+name: orderops
+services:
+  postgres-dev:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: orderops_dev
+      POSTGRES_USER: orderops_dev
+      POSTGRES_PASSWORD: ${POSTGRES_DEV_PASSWORD:?Set POSTGRES_DEV_PASSWORD}
+    ports:
+      - "${BIND_ADDRESS:?Set BIND_ADDRESS}:${POSTGRES_DEV_PORT:-5432}:5432"
+    volumes:
+      - postgres-dev:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U orderops_dev -d orderops_dev"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  postgres-test:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: orderops_test
+      POSTGRES_USER: orderops_test
+      POSTGRES_PASSWORD: ${POSTGRES_TEST_PASSWORD:?Set POSTGRES_TEST_PASSWORD}
+    ports:
+      - "${BIND_ADDRESS:?Set BIND_ADDRESS}:${POSTGRES_TEST_PORT:-5433}:5432"
+    volumes:
+      - postgres-test:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U orderops_test -d orderops_test"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  redis:
+    image: redis:8
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+    ports:
+      - "${BIND_ADDRESS:?Set BIND_ADDRESS}:${REDIS_PORT:-6379}:6379"
+    volumes:
+      - redis-data:/data
+      - ./redis.conf:/usr/local/etc/redis/redis.conf:ro
+volumes:
+  postgres-dev:
+  postgres-test:
+  redis-data:
+

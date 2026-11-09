@@ -46,6 +46,7 @@ htmlcov/
 *.local.yml
 *.local.yaml
 *.local.properties
+deploy/redis.conf
 
 # Runtime and browser session data
 logs/
